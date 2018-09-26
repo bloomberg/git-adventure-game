@@ -1,0 +1,72 @@
+#!/bin/bash
+#
+# Copyright 2018 Bloomberg Finance L.P.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+# First simple prototype how the user's answers could be verified
+#
+# o The user is expected to put his/her answer in the form of a string into
+#   a file called 'talisman'
+# o Then the validation script reads the string in talisman and computes
+#   a hash value of that string.
+# o This hash value is then compared to a pre-computed hash value (which is the hash
+#   of the correct solution.
+
+#
+# Compute the hash via md5sum - TODO: Search for a hash function that
+# we can use on all platforms (git bash for windows, unix bash)
+#
+# The function places the computed hash into a global variables called
+# 'hash'
+
+MD5=/usr/bin/md5sum
+if [[ ! -f "${MD5}" ]] && [[ -f /sbin/md5 ]]; then
+    MD5=/sbin/md5
+fi
+
+compute_hash() {
+    # Remove any DOS newlines before checksum comparison
+    data=$(tr -d '\015[:space:]' < "$1")
+    hash=$(echo "$data" | ${MD5} | cut -d ' ' -f 1)
+    return 0
+}
+
+get_branch_name() {
+    current_branch=$(git rev-parse --abbrev-ref HEAD)
+}
+
+if [ ! -f talisman ]; then
+    echo "Please submit your answers via a file called \"talisman\""
+    echo "Place this file into the top level folder of your repo."
+    exit 1
+fi
+
+#
+# Read in the answer string from 'talisman'
+#
+hash=""
+compute_hash "talisman"
+
+current_branch=""
+get_branch_name current_branch
+
+rst=$(cat ".game_data/${current_branch}_check.txt")
+if [[ $rst == $hash ]];
+then
+    exit 0
+else
+    exit 1
+fi
+
