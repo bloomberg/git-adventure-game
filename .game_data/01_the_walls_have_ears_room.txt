@@ -1,0 +1,12 @@
+You enter a clearing
+At the edge of the clearing two walls have been built, a brick wall to the left and a flint wall to the right
+Between them is an archway. When you peer through the archway you can see nothing but darkness into which it would be dangerous to venture without magic.
+
+Scrawled on the left wall are the words:
+	You can use my name to make a talisman against the darkness
+	But only if you can find out what it is
+
+Chiseled on the right wall are the words:
+	Sorry, my name is a secret
+	I've only told the walls :-P
+
