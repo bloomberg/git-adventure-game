@@ -1,0 +1,1 @@
+Activate the talisman file in this dirctory by writing something in the file.

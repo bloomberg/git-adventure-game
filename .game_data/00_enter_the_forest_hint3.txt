@@ -1,0 +1,3 @@
+echo grace > talisman
+git add talisman
+git commit -m"Activate the talisman"
