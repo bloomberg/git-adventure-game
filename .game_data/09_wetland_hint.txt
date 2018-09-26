@@ -1,0 +1,7 @@
+Remember that you are equipped with a tool that allows you look into the past
+and find all references to an artifact. This magic tool can be invoked via 
+`git log --oneline --all --graph  -- shard.txt` to give you all places in the
+past where the shared occurred.
+
+You can take a closer look at what you found by 
+`git show <ref_name>~<integer>:shard.txt`
