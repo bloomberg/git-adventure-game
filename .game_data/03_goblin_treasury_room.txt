@@ -1,0 +1,13 @@
+You have reached the goblin mines ... The goblins descend into the mines each
+day to search for diamonds.  Once their work for the day is done they come back
+and place them into the treasury.
+
+The treasurer looks after the treasury and makes sure that all diamonds are
+saved and no one can steal them.  Only his goblin workforce has access to the
+treasury in order to place the diamonds in there.
+
+At certain points in the year the treasurer inspects the treasury thoroughly to
+count the number of diamonds.  One day she realizes that some diamonds are
+missing.  Could it be that a goblin took some of them?
+
+Can you help the treasurer to find out what happened?

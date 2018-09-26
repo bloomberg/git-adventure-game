@@ -1,0 +1,2 @@
+In git-land no change goes unnoticed. For each file in your project you can,
+with just one command, get the information about everyone who touched the file.
