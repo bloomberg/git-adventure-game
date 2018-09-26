@@ -1,0 +1,83 @@
+#!/bin/bash
+#
+# Copyright 2018 Bloomberg Finance L.P.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+passThroughDuringRebase (){
+    git branch | grep 'no branch, rebasing' > /dev/null 2>&1
+    STATUS=$?
+    if [ ${STATUS} -eq 0 ]
+    then
+        exit 0
+    fi
+}
+
+# 
+passThroughDuringCherryPick(){
+    CURRENT_BRANCH=$1
+    echo "${CURRENT_BRANCH}" | grep '^[0-9]\+_wetland$' > /dev/null 2>&1
+    STATUS=$?
+    if [[ ${STATUS} -eq 0 ]]
+    then
+        if [[ ! -f talisman ]]
+        then
+            exit 0
+        fi
+    fi
+}
+
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+NO_COLOR='\033[0m'
+
+# During a rebase the prepare-commit-msg hook might run multiple times.
+# Therefor let this hook return 0 (SUCCESS) during a rebase.  The post-rewrite
+# hook will then start the evaluation if the rebase made the correct changes
+passThroughDuringRebase
+
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+# When the user performs a cherry pick then we don't want this hook to error
+# out
+passThroughDuringCherryPick "${CURRENT_BRANCH}"
+
+# If the level has defined a level-specific validation script then use that one,
+# otherwise fall back to the generic answer_validation
+if [[ -f ".game_data/${CURRENT_BRANCH}_validation.sh" ]]; then
+    (.game_data/${CURRENT_BRANCH}_validation.sh)
+    STATUS=$?
+else
+    (.game_scripts/answer_validator)
+    STATUS=$?
+fi
+
+# TODO Refactor the return codes so that it is more intuitive
+# Check the validation return value and then
+# 0 - the level has been solved
+# 1 - a mistake has been made
+# 2 - a correct commit has been made towards the full solution
+if [ ${STATUS} -eq 0 ]; then
+    echo "That's correct"
+    # Validation was successful => make the next level available
+    (.game_scripts/unlock_next_level.sh)
+elif [ ${STATUS} -eq 1 ]; then
+    printf "${RED}Incorrect - why not try again?${NO_COLOR}\n"
+    exit 1
+elif [ ${STATUS} -eq 2 ]; then
+    echo "You are on the right track - keep going!"
+    exit 0
+fi
+
+

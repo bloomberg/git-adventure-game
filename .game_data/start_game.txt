@@ -1,0 +1,11 @@
+
+Greetings traveler!
+
+Before you start your journey, we have some preparations to make.  We require
+you to tell us where on your precious hard drive we could expand our adventure
+to.  This location will be used to copy this repository to for a future
+challenge.  Please specify a non-existing folder outside the repository you
+have just cloned which we would be able to create and write to.  A word of
+warning:  spaces in the path will cause a Unicorn to choke and die.  Let's not
+do that...
+

@@ -1,0 +1,114 @@
+#!/bin/bash
+#
+# Copyright 2018 Bloomberg Finance L.P.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+
+# user selected folder.
+folder=
+
+die() {
+    echo "ERROR: $1"
+    exit 1
+}
+
+get_default_folder() {
+    (
+        cd "${DIR}/.." || die "System error.  Could not change folder!"
+        echo "${PWD}/git-adventure-data"
+    )
+}
+
+get_user_folder() {
+    local default_folder
+    local script_path
+
+    if [[ "${OSTYPE}" == "msys" ]]; then
+        default_folder=$(cygpath "-w" "$(get_default_folder)" )
+    else
+        default_folder=$(get_default_folder)
+    fi
+
+    read -r -p "Directory [${default_folder}]: " folder
+    if [[ -z "${folder}" ]]; then
+        folder="${default_folder}"
+    fi
+    if [[ "${OSTYPE}" == "msys" ]]; then
+        folder=$(cygpath "${folder}")
+    fi
+
+    # msys (git bash) is case insensitive.  Use all lower-case.
+    script_path=$(pwd)
+    if [[ "${OSTYPE}" == "msys" ]]; then
+        script_path=$(echo "${script_path}" | tr '[:upper:]' '[:lower:'])
+        folder=$(echo "${folder}" | tr '[:upper:]' '[:lower:'])
+    fi
+    if [[ ${folder} == ${script_path}* ]]; then
+        echo "Your folder may not be within this repository!"
+        return 1
+    fi
+
+    if [[ -d ${folder} ]]; then
+        if [[ "${OSTYPE}" == "msys" ]]; then
+            echo "The folder [$(cygpath "-w" "${folder}")] already exist!"
+        else
+            echo "The folder [${folder}] already exist!"
+        fi
+
+        return 1
+    fi
+
+    if ! mkdir -p "${folder}" > /dev/null 2>&1; then
+        if [[ "${OSTYPE}" == "msys" ]]; then
+            echo "Could not create folder [$(cygpath "-w" "$folder")]"
+        else
+            echo "Could not create folder [$folder]"
+        fi
+        return 1
+    fi
+}
+
+cp "${DIR}"/.game_data/hooks/* "${DIR}"/.git/hooks/
+
+# We need to create another repository that we can remote to.  Ask the user
+# for an appropriate place to locate this repository.
+clear && cat "${DIR}"/.game_data/start_game.txt
+
+until get_user_folder "$1"; do
+    echo "Please try again..."
+done
+if [[ "${OSTYPE}" == "msys" ]]; then
+    echo "You have selected $(cygpath "-w" "${folder}" )"
+else
+    echo "You have selected ${folder}"
+fi
+
+if [[ ! -d ".game_data/state" ]]; then
+    mkdir -p .game_data/state || die "Could not setup game state"
+fi
+if [[ -f ".game_data/state/spare_folder" ]]; then
+    rm -f ".game_data/state/spare_folder" || die "Could not clean up state"
+fi
+echo "${folder}" > ".game_data/state/spare_folder" || die "Could not setup game state data"
+
+echo
+echo "Thank you for your patience!  The forest gates creaks slowly open..."
+echo
+
+read -r -t 4 -p "Waiting for 4 seconds.  Press any key to continue . . . " || true
+clear
+
+git checkout 00_enter_the_forest
