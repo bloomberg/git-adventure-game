@@ -1,0 +1,31 @@
+Grace wants to make a magic potion that will give her the super-power to
+remember all git commands.  The potion is very difficult to make.  It takes 
+patience to prepare all the ingredients.
+
+Grace carefully prepares all the ingredients and borrows and old book from
+the library that contains the recipe how to make a magic potion.
+
+Unfortunately she makes some mistakes.  Can you help her get the right
+ingredients in the right order?
+
+      \/_     ,+.  
+      _/     ((|)) 
+      (,;)    )|(  
+      (,.)   ((|))  
+      (,/     `-'    
+      |/           
+      
+        ___________    
+    .-'"           "`-. 
+  d(                   )b
+   |`-..___________..-'|
+   |                   |
+   |                   |
+   |                   |
+   |                   |
+   |                   |
+   |                   |
+   |                   |
+   \                   /
+    `-..__________..-'        VK
+

@@ -1,0 +1,2 @@
+Have a look into the magic_potion.recipe file to see how a magic potion
+should be made.
