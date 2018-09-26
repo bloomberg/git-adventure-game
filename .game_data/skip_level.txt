@@ -1,0 +1,12 @@
+
+Ah, weary traveler.  If you so wish, you may skip this level and attempt it at
+a later time.  There are some alternatives I might suggest if you have not
+tried them yet...
+
+  o The 'hint' command might just prove useful in circumstances such as these.
+
+  o There is also a useful scroll: 'HELP.md' which contains snippets of wisdom.
+
+Ensure that you have thoughtfully considered your decision before you wonder
+off though.  You do not want to be caught out unprepared...
+
