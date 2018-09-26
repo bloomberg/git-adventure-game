@@ -1,0 +1,3 @@
+$ git remote add woohoo <folder_provided_at_start>/water_land
+$ git fetch woohoo
+$ git merge woohoo/rain_clouds

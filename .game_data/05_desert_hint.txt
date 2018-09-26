@@ -1,0 +1,2 @@
+Look outside of your repository.  Remember the folder you provided at the start
+of the game?  Can you find a sub-directory in there that looks promising?

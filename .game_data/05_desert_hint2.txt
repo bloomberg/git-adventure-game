@@ -1,0 +1,1 @@
+Try to connect to the 'water_land' via `git remote add`
