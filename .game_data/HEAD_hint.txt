@@ -1,0 +1,22 @@
+
+Oops!  I don't think that was intended, but you seem to have stepped into a
+hole! You are in a state where your "HEAD detached".  It's not a good look,
+I know...
+
+Let's try get you back to your adventure, shall we? If you just landed in this
+pickle, you may be able to just checkout the previous revision.  Try to
+execute the following:
+
+    $ git checkout -
+
+OK, that didn't work?  Let's look for the location you were last at.  Execute
+the following:
+
+    $ git branch
+
+and look for a familiar level.  Once you have found it, go back there by
+executing the following command:
+
+    $ git checkout <name of level>
+
+Good luck!  Hope you attach those body parts...

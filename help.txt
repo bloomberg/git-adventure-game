@@ -1,0 +1,24 @@
+This cheat sheet should be useful to you in the game, it lists commands that are used in the game with some of the options that can be used with them. 
+For fuller description of the range of options for each command use `man` on the command line or visit https://git-scm.com/docs/ 
+
+git log [[--] <path>...]
+
+git grep <regexp> $(git rev-list --all [-- <path>]) [-- <path>]
+
+git merge [<commit>...]
+git merge --abort
+git merge --continue
+
+git show [<object>...] e.g. git show <commit> or git show HEAD~1
+
+git blame [--] <file>
+
+git remote -v
+git remote add <name> <url>
+git remote remove <name>
+git remote show <name>...
+
+git rebase [-i] [<branch or remote> [<branch>]]
+
+git cherry-pick <commit>...
+
