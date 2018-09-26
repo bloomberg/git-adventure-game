@@ -1,0 +1,38 @@
+Mystical creatures live in the git adventure forest.  You want to keep memories
+of this magical place - so you aim to take snapshots fotos of the wild animals 
+that you encounter in the filesystem tree.
+
+You are equipped with a camera. You can take picture by `git add <animal>`
+followed by a `git commit` sequence of commands.
+
+Let's say you see a phoenix high up in the mountains
+
+$ ls mountains/
+$ phoenix
+
+Let's look at this creature
+
+$ cat mountains/phoenix
+      _,     ,_
+    .'/  ,_   \'.
+   |  \__( >__/  |
+   \             /
+    '-..__ __..-'
+jgs      /_\
+
+You can check if you already have a snapshot of this animal by running
+
+$ git status
+Untracked files:
+    ...
+    mountains/phoenix
+
+The phoenix is untracked, so we want to take a picute of it.
+
+$ git add mountains/phoenix
+$ git commit -m "Great phoenix snapshot foto!"
+
+...
+
+Now, it's up to you to find the next animal.  Can you have a look around if 
+you can see a unicorn?

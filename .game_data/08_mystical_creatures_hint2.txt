@@ -1,0 +1,9 @@
+To take a picture of the ghost you need to be fast.
+
+Run:
+$ git config alias.c 'commit'
+which will minimize the time it takes you to take a snapshot.
+
+Now when you see the ghost run:
+$ git add dungeon/ghost
+$ git c

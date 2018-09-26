@@ -1,0 +1,3 @@
+To take a picture of the unicorn run:
+$ git add unicorn
+$ git commit -m "My first unicorn snapshot!"
