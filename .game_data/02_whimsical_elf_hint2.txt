@@ -1,0 +1,3 @@
+You see two conflicts.  In the first conflict the changes made in the HEAD
+should be choosen, whereas in the second conflict the changes from the 
+`03_whimsical_elf_bushy` contain the correct changes.

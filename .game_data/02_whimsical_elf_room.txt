@@ -1,0 +1,35 @@
+You have entered the part of the forest where the whimsical elves are living.
+
+They get frequently attacked by the evil goblins who give them a hard time.  In
+order to be saved in the future the elves decide to build a castle to live in.
+
+It will look like this:
+
+$ cat castle
+
+                                  |>>>
+                                  |
+                    |>>>      _  _|_  _         |>>>
+                    |        |;| |;| |;|        |
+                _  _|_  _    \\.    .  /    _  _|_  _
+               |;|_|;|_|;|    \\:. ,  /    |;|_|;|_|;|
+               \\..      /    ||;   . |    \\.    .  /
+                \\.  ,  /     ||:  .  |     \\:  .  /
+                 ||:   |_   _ ||_ . _ | _   _||:   |
+                 ||:  .|||_|;|_|;|_|;|_|;|_|;||:.  |
+                 ||:   ||.    .     .      . ||:  .|
+                 ||: . || .     . .   .  ,   ||:   |       \,/
+                 ||:   ||:  ,  _______   .   ||: , |            /`\
+                 ||:   || .   /+++++++\    . ||:   |
+                 ||:   ||.    |+++++++| .    ||: . |
+              __ ||: . ||: ,  |+++++++|.  . _||_   |
+     ____--`~    '--~~__|.    |+++++__|----~    ~`---,              ___
+-~--~                   ~---__|,--~'                  ~~----_____-~'   `~----~~
+The Gnome Castle
+
+The elves are worried that the goblins might attack soon, so they are in a rush
+and a lot of work happens in parallel.
+
+You need to help them combine the work done by the individual elves.
+Elf Bushy Evergreen was meant to built the lower part of the castle - and 
+Alabaster Snowball was meant to built the upper part.

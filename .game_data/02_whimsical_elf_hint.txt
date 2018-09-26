@@ -1,0 +1,1 @@
+Try using the 'git merge' command
