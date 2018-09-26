@@ -1,0 +1,3 @@
+Use `git grep fish $(git rev-list --all -- pond) -- pond`
+
+On Windows Cmd use `for /f %r in ('git rev-list --all -- pond') do git grep fish %r -- pond`
