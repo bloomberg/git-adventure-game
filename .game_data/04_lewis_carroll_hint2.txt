@@ -1,0 +1,5 @@
+Inspect how 'poem' looked like in the past
+$ git show HEAD~1:poem
+
+Once you have identified the right version you can recover the poem.
+$ git show HEAD~<number>:poem > poem
