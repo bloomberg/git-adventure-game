@@ -2,7 +2,7 @@ This workshop is for anyone who has ever felt nervous using Git. We’ll help yo
 
 To play this game you will need access to the Git CLI https://git-scm.com/downloads
 
-In general in this game git branches refer to locations, and commits refer to things that have happened in the past so the commit history of a branch will tell the story of what happened in a certain place. Files represent something in the environment that can be interacted with in some way e.g. a tree or a building.
+In general in this game Git branches refer to locations, and commits refer to things that have happened in the past so the commit history of a branch will tell the story of what happened in a certain place. Files represent something in the environment that can be interacted with in some way e.g. a tree or a building.
 
 These sripts will be available to you:
 
